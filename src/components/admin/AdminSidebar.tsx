@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { useState } from 'react'
 import {
@@ -94,12 +95,9 @@ export default function AdminSidebar({ userEmail, newMessageCount = 0 }: Props) 
     <div className="flex flex-col h-full overflow-hidden">
       {/* Logo */}
       <div className="flex items-center gap-2.5 px-4 h-14 border-b border-white/[0.06] flex-shrink-0">
-        <div className="w-7 h-7 rounded-lg bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center flex-shrink-0">
-          <div className="w-2.5 h-2.5 rounded-sm bg-[#00E5FF]" />
-        </div>
+        <Image src="/logo.png" alt="Rifat Ahmed" height={28} width={95} className="h-7 w-auto" />
         <div>
-          <p className="text-[13px] font-semibold text-white leading-none">Portfolio Admin</p>
-          <p className="text-[10px] text-[#B3B3B3]/60 mt-0.5 leading-none">Rifat Ahmed</p>
+          <p className="text-[11px] text-[#B3B3B3]/60 leading-none">Admin Panel</p>
         </div>
       </div>
 

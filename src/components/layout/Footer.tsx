@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowUpRight } from 'lucide-react'
 import { siteConfig } from '@/lib/data'
 
@@ -40,11 +41,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-8">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
-            <Link href="/" className="flex items-center gap-2 w-fit" aria-label="Rifat Ahmed — Home">
-              <div className="w-7 h-7 rounded-lg bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center" aria-hidden="true">
-                <div className="w-2.5 h-2.5 rounded-sm bg-[#00E5FF]" />
-              </div>
-              <span className="font-semibold text-sm text-white">Rifat Ahmed</span>
+            <Link href="/" className="flex items-center w-fit" aria-label="Rifat Ahmed — Home">
+              <Image src="/logo.png" alt="Rifat Ahmed" height={32} width={110} className="h-24 w-auto" />
             </Link>
             <p className="text-sm text-[#B3B3B3] leading-relaxed max-w-xs">
               AI automation consultant building intelligent systems that help businesses scale without adding headcount.
@@ -87,9 +85,7 @@ export default function Footer() {
           <p className="text-xs text-[#B3B3B3]">
             © {new Date().getFullYear()} Rifat Ahmed. All rights reserved.
           </p>
-          <p className="text-xs text-[#555]">
-            Built with Next.js · Deployed on Vercel
-          </p>
+         
         </div>
       </div>
     </footer>

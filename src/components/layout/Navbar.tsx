@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 
@@ -52,13 +53,8 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-2 group" aria-label="Rifat Ahmed — Home">
-              <div className="w-7 h-7 rounded-lg bg-[#00E5FF]/10 border border-[#00E5FF]/20 flex items-center justify-center" aria-hidden="true">
-                <div className="w-2.5 h-2.5 rounded-sm bg-[#00E5FF]" />
-              </div>
-              <span className="font-semibold text-sm tracking-tight text-white">
-                Rifat Ahmed
-              </span>
+            <Link href="/" className="flex items-center group" aria-label="Rifat Ahmed — Home">
+              <Image src="/logo.png" alt="Rifat Ahmed" height={24} width={120} className="h-32 w-auto" priority />
             </Link>
 
             {/* Desktop Nav */}
