@@ -46,6 +46,8 @@ export default function CaseStudyForm({ caseStudy, isEdit, onSave }: Props) {
     testimonial_author: caseStudy?.testimonial_author ?? null,
     testimonial_role: caseStudy?.testimonial_role ?? null,
     cover_image_url: caseStudy?.cover_image_url ?? null,
+    pdf_url: caseStudy?.pdf_url ?? null,
+    live_url: caseStudy?.live_url ?? null,
     tags: caseStudy?.tags ?? [],
     tech_stack: caseStudy?.tech_stack ?? [],
     duration: caseStudy?.duration ?? null,
@@ -397,12 +399,12 @@ export default function CaseStudyForm({ caseStudy, isEdit, onSave }: Props) {
                 Cover Image
               </h2>
               <div className={FIELD}>
-                <label className={LABEL_CLASS}>Image URL</label>
+                <label className={LABEL_CLASS}>Image URL (Cloudinary)</label>
                 <input
                   className={INPUT_CLASS}
                   value={form.cover_image_url ?? ''}
                   onChange={(e) => set('cover_image_url', e.target.value || null)}
-                  placeholder="https://…"
+                  placeholder="https://res.cloudinary.com/…"
                 />
               </div>
               {form.cover_image_url && (
@@ -415,6 +417,31 @@ export default function CaseStudyForm({ caseStudy, isEdit, onSave }: Props) {
                   />
                 </div>
               )}
+            </section>
+
+            {/* Project Links */}
+            <section className="bg-[#111111] border border-white/[0.06] rounded-2xl p-5 space-y-4">
+              <h2 className="text-sm font-semibold text-white uppercase tracking-wider">
+                Project Links
+              </h2>
+              <div className={FIELD}>
+                <label className={LABEL_CLASS}>Live Demo URL</label>
+                <input
+                  className={INPUT_CLASS}
+                  value={form.live_url ?? ''}
+                  onChange={(e) => set('live_url', e.target.value || null)}
+                  placeholder="https://your-demo.vercel.app"
+                />
+              </div>
+              <div className={FIELD}>
+                <label className={LABEL_CLASS}>PDF URL (Cloudinary)</label>
+                <input
+                  className={INPUT_CLASS}
+                  value={form.pdf_url ?? ''}
+                  onChange={(e) => set('pdf_url', e.target.value || null)}
+                  placeholder="https://res.cloudinary.com/…/raw/upload/…"
+                />
+              </div>
             </section>
 
             {/* Tags */}

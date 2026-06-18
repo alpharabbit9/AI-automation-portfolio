@@ -42,7 +42,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2 space-y-4">
             <Link href="/" className="flex items-center w-fit" aria-label="Rifat Ahmed — Home">
-              <Image src="/logo.png" alt="Rifat Ahmed" height={32} width={110} className="h-24 w-auto" />
+              <Image src="/logo.png" alt="Rifat Ahmed" height={32} width={110} className="h-8 w-auto" />
             </Link>
             <p className="text-sm text-[#B3B3B3] leading-relaxed max-w-xs">
               AI automation consultant building intelligent systems that help businesses scale without adding headcount.

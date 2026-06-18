@@ -25,10 +25,10 @@ export default function CaseStudiesPage() {
               Back to home
             </Link>
             <span className="section-label mb-4 block">Case Studies</span>
-            <h1 className="text-5xl lg:text-7xl font-semibold tracking-tight text-white mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-semibold tracking-tight text-white mb-6">
               Real Results
             </h1>
-            <p className="text-xl text-[#B3B3B3] max-w-xl leading-relaxed">
+            <p className="text-base sm:text-xl text-[#B3B3B3] max-w-xl leading-relaxed">
               Every case study represents a real business problem solved with measurable outcomes. No vanity metrics.
             </p>
           </div>
@@ -37,12 +37,12 @@ export default function CaseStudiesPage() {
           <div className="space-y-4">
             {published.map((study, i) => (
               <Link key={study.id} href={`/case-studies/${study.slug}`}>
-                <div className="group rounded-2xl border border-white/[0.08] bg-[#111111] p-8 lg:p-10 hover:border-white/[0.14] hover:bg-[#161616] transition-all duration-300">
-                  <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div className="group rounded-2xl border border-white/[0.08] bg-[#111111] p-5 sm:p-8 lg:p-10 hover:border-white/[0.14] hover:bg-[#161616] transition-all duration-300">
+                  <div className="grid grid-cols-1 lg:grid-cols-5 gap-6 lg:gap-8">
                     {/* Left: Content */}
                     <div className="lg:col-span-3">
-                      <div className="flex flex-wrap gap-2 mb-5">
-                        {study.tags.map(tag => (
+                      <div className="flex flex-wrap gap-2 mb-4 sm:mb-5">
+                        {study.tags.slice(0, 3).map(tag => (
                           <span key={tag} className="tag text-[10px]">{tag}</span>
                         ))}
                         {study.duration && (
@@ -51,26 +51,26 @@ export default function CaseStudiesPage() {
                           </span>
                         )}
                       </div>
-                      <h2 className="text-xl lg:text-2xl font-semibold text-white mb-4 tracking-tight leading-snug">
+                      <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-3 sm:mb-4 tracking-tight leading-snug">
                         {study.title}
                       </h2>
-                      <p className="text-[#B3B3B3] leading-relaxed line-clamp-3">
+                      <p className="text-sm sm:text-base text-[#B3B3B3] leading-relaxed line-clamp-3">
                         {study.results}
                       </p>
-                      <div className="mt-6 flex items-center gap-2 text-sm text-[#B3B3B3] group-hover:text-white transition-colors">
+                      <div className="mt-4 sm:mt-6 flex items-center gap-2 text-sm text-[#B3B3B3] group-hover:text-white transition-colors">
                         <span>Read full case study</span>
                         <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                       </div>
                     </div>
 
                     {/* Right: Metrics */}
-                    <div className="lg:col-span-2 flex flex-wrap gap-8 lg:justify-end lg:items-start">
-                      {study.metrics.map(m => (
+                    <div className="lg:col-span-2 flex flex-wrap gap-6 sm:gap-8 lg:justify-end lg:items-start">
+                      {study.metrics.slice(0, 3).map(m => (
                         <div key={m.label} className="flex flex-col gap-1">
-                          <span className="text-3xl font-semibold tracking-tight text-white">{m.value}</span>
+                          <span className="text-2xl sm:text-3xl font-semibold tracking-tight text-white">{m.value}</span>
                           <span className="text-xs text-[#B3B3B3] font-medium">{m.label}</span>
                           {m.description && (
-                            <span className="text-[10px] text-[#B3B3B3]/60">{m.description}</span>
+                            <span className="text-[10px] text-[#B3B3B3]/60 hidden sm:block">{m.description}</span>
                           )}
                         </div>
                       ))}

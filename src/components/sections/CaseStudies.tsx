@@ -56,15 +56,43 @@ const STUDY_META: Record<string, StudyMeta> = {
       { label: 'ROAS',             before: 'Baseline',   after: '+34%'         },
     ],
   },
+  'real-estate-lead-response': {
+    problem_short: 'Buyer inquiries sitting unanswered for hours. Agents writing repetitive emails manually. No follow-up system — leads going cold before the first conversation.',
+    solution_short: 'AI system that responds to every inquiry in 30 seconds, scores lead quality, and runs a Day 2 / Day 5 / Day 7 nurture sequence — fully automated, 24/7.',
+    before_after: [
+      { label: 'First response',    before: 'Hours',         after: '< 30 sec'   },
+      { label: 'After-hours cover', before: 'None',          after: '24/7'        },
+      { label: 'Follow-up process', before: 'Manual / None', after: 'Automated'  },
+    ],
+  },
+  'real-estate-lead-qualification': {
+    problem_short: 'Agents spending hours manually reviewing every inquiry to find serious buyers. High-value leads buried in a crowded inbox. No prioritization system.',
+    solution_short: 'Groq AI evaluates every lead on budget, urgency, and intent — assigning a 1-10 score and routing agents directly to Hot prospects with a full AI summary.',
+    before_after: [
+      { label: 'Lead triage',       before: 'Manual',   after: 'AI-automated'   },
+      { label: 'Hot lead alert',    before: '—',        after: '< 60 sec'        },
+      { label: 'Follow-up clarity', before: 'Unclear',  after: 'Priority-based' },
+    ],
+  },
+  'propiq-appointment-booking': {
+    problem_short: 'Agents losing deals from slow response times — too busy with showings and meetings. Manual scheduling, missed follow-ups, and unprepared consultations.',
+    solution_short: 'PropIQ qualifies leads with LLaMA 3.3 70B, auto-books consultations for hot prospects, and generates AI meeting briefs so agents walk in fully prepared.',
+    before_after: [
+      { label: 'Response time',   before: 'Hours',    after: '< 60 seconds' },
+      { label: 'Booking process', before: 'Manual',   after: 'Self-service'  },
+      { label: 'Call prep',       before: 'Minimal',  after: 'AI briefs'    },
+    ],
+  },
 }
 
 // ── Filter configuration ──────────────────────────────────────
 const FILTERS = [
-  { key: 'All',        test: () => true                                               },
-  { key: 'SaaS',       test: (s: CaseStudy) => s.client_industry.includes('SaaS')     },
-  { key: 'Logistics',  test: (s: CaseStudy) => s.client_industry.includes('Logistics')},
-  { key: 'Marketing',  test: (s: CaseStudy) => s.client_industry.includes('Marketing')},
-  { key: 'E-commerce', test: (s: CaseStudy) => s.client_industry.includes('E-commerce')},
+  { key: 'All',          test: () => true                                                   },
+  { key: 'Real Estate',  test: (s: CaseStudy) => s.client_industry.includes('Real Estate') },
+  { key: 'SaaS',         test: (s: CaseStudy) => s.client_industry.includes('SaaS')        },
+  { key: 'Logistics',    test: (s: CaseStudy) => s.client_industry.includes('Logistics')   },
+  { key: 'Marketing',    test: (s: CaseStudy) => s.client_industry.includes('Marketing')   },
+  { key: 'E-commerce',   test: (s: CaseStudy) => s.client_industry.includes('E-commerce')  },
 ] as const
 
 type FilterKey = typeof FILTERS[number]['key']
@@ -224,11 +252,130 @@ function DashboardMockup() {
   )
 }
 
+function RealEstateLeadResponseMockup() {
+  const leads = [
+    { name: 'James M.', detail: '3BR · Downtown · $820K', score: '8.4', status: 'Responded', time: '28s', color: '#10B981' },
+    { name: 'Priya S.', detail: '2BR · Midtown · $540K',  score: '6.1', status: 'Responded', time: '31s', color: '#10B981' },
+    { name: 'Tom C.',   detail: '4BR · Suburbs · $1.1M',  score: '9.2', status: 'Day 2 sent', time: '—',   color: '#00E5FF' },
+  ]
+  return (
+    <MockupChrome url="leads.realestate.ai/inbox">
+      <div className="space-y-1.5">
+        <div className="flex items-center gap-2 mb-2 pb-2 border-b border-white/[0.05]">
+          <div className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-[7px] text-white/30">All inquiries responded automatically</span>
+        </div>
+        {leads.map(l => (
+          <div key={l.name} className="flex items-center gap-2 bg-[#111111] border border-white/[0.05] rounded-lg px-2.5 py-2">
+            <div className="flex-1 min-w-0">
+              <div className="text-[8px] font-semibold text-white/70">{l.name}</div>
+              <div className="text-[7px] text-white/30 truncate">{l.detail}</div>
+            </div>
+            <div className="text-right flex-shrink-0 space-y-0.5">
+              <div className="text-[7px] font-medium" style={{ color: l.color }}>{l.status}</div>
+              <div className="text-[6px] text-white/20">{l.time !== '—' ? `in ${l.time}` : l.time}</div>
+            </div>
+            <div className="w-8 text-right">
+              <span className="text-[8px] font-semibold text-[#00E5FF]/70">{l.score}</span>
+            </div>
+          </div>
+        ))}
+        <div className="flex items-center justify-between pt-1.5">
+          <span className="text-[6px] text-white/20">Avg response time</span>
+          <span className="text-[7px] font-semibold text-[#00E5FF]/60">29 sec</span>
+        </div>
+      </div>
+    </MockupChrome>
+  )
+}
+
+function RealEstateLeadQualificationMockup() {
+  const leads = [
+    { name: 'Rachel B.', score: '9.4', priority: 'Hot',          color: '#F59E0B', bg: 'rgba(245,158,11,0.08)'  },
+    { name: 'Daniel K.', score: '7.8', priority: 'High Priority', color: '#00E5FF', bg: 'rgba(0,229,255,0.05)'  },
+    { name: 'Sophia L.', score: '5.2', priority: 'Nurture',       color: '#8B5CF6', bg: 'rgba(139,92,246,0.05)' },
+    { name: 'Mike W.',   score: '2.1', priority: 'Low Intent',    color: '#666',    bg: 'transparent'            },
+  ]
+  return (
+    <MockupChrome url="qualify.realestate.ai/pipeline">
+      <div className="space-y-1">
+        {leads.map((l, i) => (
+          <div
+            key={l.name}
+            className="flex items-center gap-2 rounded-lg px-2.5 py-2 border border-white/[0.04]"
+            style={{ background: l.bg }}
+          >
+            <div className="flex-1 min-w-0">
+              <div className="text-[8px] font-semibold text-white/65">{l.name}</div>
+              <div className="text-[7px] mt-0.5" style={{ color: l.color }}>{l.priority}</div>
+            </div>
+            <div className="flex items-center gap-1.5">
+              <div className="h-[3px] w-14 rounded-full bg-white/[0.06]">
+                <div className="h-full rounded-full" style={{ width: `${parseFloat(l.score) * 10}%`, background: l.color }} />
+              </div>
+              <span className="text-[8px] font-semibold text-white/50 w-6 text-right">{l.score}</span>
+            </div>
+          </div>
+        ))}
+        <div className="flex items-center gap-1.5 pt-1.5">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#F59E0B] animate-pulse" />
+          <span className="text-[6px] text-white/25">1 hot lead alert sent · 2 sec ago</span>
+        </div>
+      </div>
+    </MockupChrome>
+  )
+}
+
+function PropIQMockup() {
+  const stats = [
+    { label: 'Qualified',  value: '14', color: '#00E5FF' },
+    { label: 'Booked',     value: '9',  color: '#10B981' },
+    { label: 'Avg Score',  value: '7.6', color: '#8B5CF6' },
+  ]
+  const pipeline = [
+    { name: 'Aisha N.', score: '9.1', status: 'Consultation Booked', color: '#10B981' },
+    { name: 'Chris D.', score: '8.8', status: 'Reminder #1 Sent',    color: '#00E5FF' },
+    { name: 'Nadia P.', score: '6.3', status: 'Nurture Sequence',    color: '#8B5CF6' },
+  ]
+  return (
+    <MockupChrome url="propiq-ai-liart.vercel.app/dashboard">
+      <div className="space-y-2">
+        <div className="grid grid-cols-3 gap-1.5">
+          {stats.map(s => (
+            <div key={s.label} className="bg-[#111111] border border-white/[0.05] rounded-lg p-2 text-center">
+              <div className="text-[11px] font-semibold" style={{ color: s.color }}>{s.value}</div>
+              <div className="text-[6px] text-white/30 mt-0.5">{s.label}</div>
+            </div>
+          ))}
+        </div>
+        <div className="space-y-1">
+          {pipeline.map(p => (
+            <div key={p.name} className="flex items-center gap-2 bg-[#111111] border border-white/[0.05] rounded-lg px-2.5 py-1.5">
+              <div className="flex-1 min-w-0">
+                <div className="text-[8px] font-semibold text-white/65">{p.name}</div>
+                <div className="text-[7px] mt-0.5" style={{ color: p.color }}>{p.status}</div>
+              </div>
+              <span className="text-[8px] font-semibold text-white/40">{p.score}</span>
+            </div>
+          ))}
+        </div>
+        <div className="flex items-center gap-1.5">
+          <div className="w-1.5 h-1.5 rounded-full bg-[#10B981] animate-pulse" />
+          <span className="text-[6px] text-white/20">PropIQ running · last lead 4 min ago</span>
+        </div>
+      </div>
+    </MockupChrome>
+  )
+}
+
 const MOCKUPS: Record<string, React.FC> = {
-  'saas-ai-sales-agent':           SalesMockup,
-  'logistics-invoice-automation':  InvoiceMockup,
-  'agency-lead-generation-system': LeadGenMockup,
-  'ecommerce-operations-dashboard': DashboardMockup,
+  'saas-ai-sales-agent':             SalesMockup,
+  'logistics-invoice-automation':    InvoiceMockup,
+  'agency-lead-generation-system':   LeadGenMockup,
+  'ecommerce-operations-dashboard':  DashboardMockup,
+  'real-estate-lead-response':       RealEstateLeadResponseMockup,
+  'real-estate-lead-qualification':  RealEstateLeadQualificationMockup,
+  'propiq-appointment-booking':      PropIQMockup,
 }
 
 function StudyMockup({ slug }: { slug: string }) {
@@ -514,7 +661,7 @@ export default function CaseStudies({ studies }: CaseStudiesProps) {
             <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
               {/* Filter tabs */}
               <div
-                className="flex items-center gap-0.5 p-1 rounded-xl bg-white/[0.03] border border-white/[0.06]"
+                className="flex items-center gap-0.5 p-1 rounded-xl bg-white/[0.03] border border-white/[0.06] overflow-x-auto max-w-full scrollbar-hide"
                 role="group"
                 aria-label="Filter case studies by industry"
               >

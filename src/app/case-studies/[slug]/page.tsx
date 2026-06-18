@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Quote, ArrowRight } from 'lucide-react'
+import { ArrowLeft, Quote, ArrowRight, ExternalLink, FileText } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { caseStudies, siteConfig } from '@/lib/data'
@@ -111,12 +111,15 @@ export default async function CaseStudyPage({ params }: Props) {
                 </h1>
 
                 {/* Key Metrics Hero */}
-                <dl className="grid grid-cols-3 gap-6 p-6 rounded-2xl border border-white/[0.08] bg-[#111111]">
+                <dl className={`grid gap-4 p-5 sm:p-6 rounded-2xl border border-white/[0.08] bg-[#111111] ${
+                  study.metrics.length === 3 ? 'grid-cols-3' :
+                  study.metrics.length === 2 ? 'grid-cols-2' : 'grid-cols-1'
+                }`}>
                   {study.metrics.map(m => (
                     <div key={m.label} className="text-center">
-                      <dd className="text-3xl font-semibold tracking-tight text-white mb-1">{m.value}</dd>
+                      <dd className="text-2xl sm:text-3xl font-semibold tracking-tight text-white mb-1">{m.value}</dd>
                       <dt className="text-xs text-[#B3B3B3] font-medium">{m.label}</dt>
-                      {m.description && <dd className="text-[10px] text-[#B3B3B3]/60 mt-0.5">{m.description}</dd>}
+                      {m.description && <dd className="text-[10px] text-[#B3B3B3]/60 mt-0.5 hidden sm:block">{m.description}</dd>}
                     </div>
                   ))}
                 </dl>
@@ -215,6 +218,35 @@ export default async function CaseStudyPage({ params }: Props) {
                       </li>
                     ))}
                   </ul>
+                </div>
+              )}
+
+              {/* Live Demo + PDF */}
+              {(study.live_url || study.pdf_url) && (
+                <div className="rounded-2xl border border-white/[0.08] bg-[#111111] p-6 space-y-3">
+                  <h2 className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">Project Links</h2>
+                  {study.live_url && (
+                    <a
+                      href={study.live_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 py-3 text-sm font-semibold text-white border border-[#00E5FF]/20 bg-[#00E5FF]/[0.05] rounded-xl hover:bg-[#00E5FF]/[0.1] hover:border-[#00E5FF]/30 transition-all"
+                    >
+                      <ExternalLink className="w-4 h-4" aria-hidden="true" />
+                      View Live Demo
+                    </a>
+                  )}
+                  {study.pdf_url && (
+                    <a
+                      href={study.pdf_url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 py-3 text-sm font-medium text-[#B3B3B3] border border-white/[0.08] rounded-xl hover:bg-white/[0.03] hover:text-white transition-all"
+                    >
+                      <FileText className="w-4 h-4" aria-hidden="true" />
+                      Download Case Study PDF
+                    </a>
+                  )}
                 </div>
               )}
 

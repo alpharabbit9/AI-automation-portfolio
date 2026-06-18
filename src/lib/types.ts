@@ -91,6 +91,8 @@ export interface CaseStudy {
   testimonial_author: string | null
   testimonial_role: string | null
   cover_image_url: string | null
+  pdf_url: string | null
+  live_url: string | null
   tags: string[]
   tech_stack: string[]
   duration: string | null
