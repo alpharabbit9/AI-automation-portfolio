@@ -258,7 +258,7 @@ export const caseStudies: CaseStudy[] = [
     testimonial_quote: null,
     testimonial_author: null,
     testimonial_role: null,
-    cover_image_url: null,
+    cover_image_url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image.png',
     pdf_url: 'https://res.cloudinary.com/dsyhgdfvc/raw/upload/v1781801999/portfolio/pdfs/real-estate-lead-response.pdf',
     live_url: null,
     tags: ['AI Agents', 'Real Estate', 'Lead Automation', 'Email Automation'],
@@ -268,6 +268,97 @@ export const caseStudies: CaseStudy[] = [
       { value: '30s', label: 'Response Time', description: 'Down from hours of delay' },
       { value: '24/7', label: 'Availability', description: 'Including evenings & weekends' },
       { value: '3-Step', label: 'Follow-Up Sequence', description: 'Day 2, Day 5, Day 7' },
+    ],
+    content_blocks: [
+      { type: 'lead', text: 'In real estate, speed wins. An AI-powered lead engagement system that responds to every property inquiry in under 30 seconds, qualifies prospects, automates follow-up, and ensures no opportunity is ever lost to a slow reply.' },
+
+      { type: 'heading', level: 2, text: 'The Problem' },
+      { type: 'paragraph', text: 'When a prospective buyer submits an inquiry, they\'re often evaluating multiple properties and contacting several agents at once. Every minute of delay narrows the window of opportunity.' },
+      { type: 'list', items: [
+        'New inquiries sit unanswered for hours',
+        'Leads arrive outside business hours',
+        'Agents spend valuable time on repetitive replies',
+        'Follow-ups are inconsistent or forgotten',
+        'Buyers lose interest before real engagement begins',
+      ] },
+
+      { type: 'heading', level: 2, text: 'The Objective' },
+      { type: 'list', style: 'check', items: [
+        'Respond to inquiries within seconds',
+        'Personalize communication based on buyer details',
+        'Identify high-value prospects',
+        'Automate follow-up sequences',
+        'Centralize the lead database',
+        'Ensure no inquiry goes unanswered',
+      ] },
+
+      { type: 'heading', level: 2, text: 'The Solution' },
+      { type: 'paragraph', text: 'An AI-powered Lead Response System that captures buyer inquiries, generates personalized email responses, scores lead quality, and nurtures prospects through a multi-step follow-up sequence — so agents only spend time on conversations that matter.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_1.png', caption: 'High-level system architecture' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_2.png', caption: 'AI response generation flow' },
+
+      { type: 'heading', level: 2, text: 'Workflow Overview' },
+
+      { type: 'heading', level: 3, text: 'Step 1 — Buyer Submits Inquiry' },
+      { type: 'paragraph', text: 'A buyer completes an inquiry form capturing name, email, preferred location, property type, and budget. The submission is instantly processed by the workflow.' },
+
+      { type: 'heading', level: 3, text: 'Step 2 — AI Generates a Personalized Response' },
+      { type: 'paragraph', text: 'The system analyzes the buyer\'s details and produces a custom response that acknowledges their interest and references their specific requirements — delivered within ~30 seconds.' },
+
+      { type: 'heading', level: 3, text: 'Step 3 — Lead Qualification' },
+      { type: 'paragraph', text: 'Each inquiry is evaluated and assigned a lead score based on engagement and buying intent, so agents know who deserves immediate attention.' },
+
+      { type: 'heading', level: 3, text: 'Step 4 — Automatic Lead Logging' },
+      { type: 'paragraph', text: 'Every submission flows into a centralized database with buyer details, property preferences, budget, lead score, status, and timestamp — eliminating manual data entry.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_3.png', caption: 'Centralized lead database' },
+
+      { type: 'heading', level: 3, text: 'Step 5 — Automated Follow-Up Sequence' },
+      { type: 'paragraph', text: 'Most leads don\'t convert on the first interaction. The system runs a 3-step nurture sequence:' },
+      { type: 'list', items: [
+        'Day 2 — Re-engagement message',
+        'Day 5 — Value-driven check-in offering further property assistance',
+        'Day 7 — Final follow-up encouraging continued discussion',
+      ] },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_4.png', caption: 'Multi-step follow-up logic' },
+
+      { type: 'heading', level: 3, text: 'Step 6 — 24/7 Lead Engagement' },
+      { type: 'paragraph', text: 'Whether an inquiry arrives during office hours, late at night, or on weekends, every prospect enters the workflow immediately. No lead is left waiting.' },
+
+      { type: 'heading', level: 2, text: 'Key Capabilities' },
+      { type: 'list', style: 'check', items: [
+        'Instant, personalized lead response within seconds',
+        'AI-powered personalization tailored to each buyer',
+        'Lead scoring to surface high-priority prospects',
+        'Automated lead tracking in a centralized database',
+        'Multi-step follow-up automation',
+        'Always-on availability — 24/7/365',
+      ] },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_5.png', caption: 'Lead scoring view' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_6.png', caption: 'Automated lead tracking' },
+
+      { type: 'heading', level: 2, text: 'Business Impact' },
+      { type: 'beforeAfter', before: [
+        'Delayed responses to new inquiries',
+        'Manual email drafting',
+        'Inconsistent follow-up',
+        'Lost opportunities outside office hours',
+        'Lead info scattered across systems',
+      ], after: [
+        'Immediate engagement for every inquiry',
+        'Consistent communication at scale',
+        'Automated lead nurturing',
+        'Centralized lead visibility',
+        'More agent time on high-value sales activities',
+      ] },
+
+      { type: 'heading', level: 2, text: 'Project Gallery' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_7.png', caption: 'Inquiry form experience' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_8.png', caption: 'AI-generated response email' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_9.png', caption: 'Automated workflow architecture' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-response/image_10.png', caption: 'Lead database' },
+
+      { type: 'heading', level: 2, text: 'Outcome' },
+      { type: 'paragraph', text: 'By combining instant AI responses, lead qualification, automated nurturing, and centralized tracking, the system ensures every inquiry receives attention while reducing the operational burden on agents — turning interest into conversations and conversations into clients.' },
     ],
     featured: false,
     sort_order: 5,
@@ -290,9 +381,9 @@ export const caseStudies: CaseStudy[] = [
     testimonial_quote: null,
     testimonial_author: null,
     testimonial_role: null,
-    cover_image_url: null,
+    cover_image_url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-qualification/Screenshot_2026-06-17_152756.png',
     pdf_url: 'https://res.cloudinary.com/dsyhgdfvc/raw/upload/v1781802000/portfolio/pdfs/real-estate-lead-qualification.pdf',
-    live_url: null,
+    live_url: 'https://ai-real-estate-lead-qualification.vercel.app/',
     tags: ['AI Agents', 'Real Estate', 'Lead Qualification', 'n8n'],
     tech_stack: ['n8n', 'Groq AI', 'Google Sheets', 'Email Automation', 'Lead Scoring'],
     duration: '1 week',
@@ -300,6 +391,87 @@ export const caseStudies: CaseStudy[] = [
       { value: '1–10', label: 'AI Lead Scoring', description: 'Intent-based qualification' },
       { value: '< 60s', label: 'Hot Lead Alert', description: 'Instant agent notification' },
       { value: '0', label: 'Manual Reviews', description: 'Fully automated triage' },
+    ],
+    content_blocks: [
+      { type: 'lead', text: 'An intelligent lead qualification workflow that automatically scores buyer inquiries, prioritizes high-intent prospects, and delivers actionable insights to real estate agents in real time.' },
+
+      { type: 'heading', level: 2, text: 'The Problem' },
+      { type: 'paragraph', text: 'Real estate agents don\'t struggle to generate leads. They struggle to know which leads deserve immediate attention. Hours get burned reviewing messages and updating spreadsheets while motivated buyers sit unnoticed in a crowded inbox.' },
+      { type: 'list', items: [
+        'High-value opportunities get delayed responses',
+        'Time wasted on low-intent inquiries',
+        'Lead data fragmented across emails and spreadsheets',
+        'Follow-up priorities unclear',
+        'Deals lost to slow response times',
+      ] },
+
+      { type: 'heading', level: 2, text: 'The Objective' },
+      { type: 'list', style: 'check', items: [
+        'Identify serious buyers instantly',
+        'Eliminate manual lead review',
+        'Deliver real-time notifications for top prospects',
+        'Centralize all lead information',
+        'Create a structured workflow for follow-up',
+      ] },
+
+      { type: 'heading', level: 2, text: 'My Role' },
+      { type: 'paragraph', text: 'Designed and built the end-to-end AI automation system: lead capture workflow (n8n), AI qualification engine (Groq), lead storage (Supabase / Google Sheets), notification system, and full architecture and scoring logic design.' },
+
+      { type: 'heading', level: 2, text: 'The Solution' },
+      { type: 'paragraph', text: 'An AI-driven lead qualification system that transforms unstructured buyer inquiries into a prioritized pipeline. Every submission is analyzed for intent, scored 1–10, and routed by urgency — so agents see a ranked list of prospects with clear next actions.' },
+
+      { type: 'heading', level: 2, text: 'Workflow Overview' },
+
+      { type: 'heading', level: 3, text: 'Step 1 — Lead Submission' },
+      { type: 'paragraph', text: 'A buyer submits an inquiry through a capture form with name, email, phone, preferred location, budget, and message.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-qualification/image.png', caption: 'Lead capture form' },
+
+      { type: 'heading', level: 3, text: 'Step 2 — AI Qualification Engine' },
+      { type: 'paragraph', text: 'The AI evaluates each inquiry against buying urgency, budget clarity, purchase readiness, engagement level, and overall intent — assigning a score between 1 and 10.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-qualification/image_1.png', caption: 'Qualification engine logic' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-qualification/image_2.png', caption: 'AI scoring output' },
+
+      { type: 'heading', level: 3, text: 'Step 3 — Intelligent Lead Categorization' },
+      { type: 'table',
+        headers: ['Score', 'Classification', 'Recommended Action'],
+        rows: [
+          ['9–10', 'Hot Lead', 'Contact immediately'],
+          ['7–8', 'High Priority', 'Follow up within 24 hours'],
+          ['5–6', 'Nurture Lead', 'Keep engaged'],
+          ['1–4', 'Low Intent', 'Archive for future campaigns'],
+        ] },
+
+      { type: 'heading', level: 3, text: 'Step 4 — Instant High-Value Lead Alerts' },
+      { type: 'paragraph', text: 'When a Hot or High-Priority lead enters the system, an automated email fires immediately with lead info, AI-generated summary, qualification score, priority level, and suggested next action.' },
+      { type: 'callout', tone: 'accent', title: 'Hot Lead Detected — Score 9.4/10', text: 'Buyer actively searching within stated budget. Recommend phone contact within 1 hour.' },
+
+      { type: 'heading', level: 3, text: 'Step 5 — Automated Lead Database' },
+      { type: 'paragraph', text: 'Every inquiry is automatically logged with contact info, budget, location, AI score, priority level, and timestamp — a centralized lead management system with zero manual data entry.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-qualification/image_3.png', caption: 'Auto-populated lead database' },
+
+      { type: 'heading', level: 2, text: 'Business Impact' },
+      { type: 'beforeAfter', before: [
+        'Leads scattered across emails',
+        'No qualification process',
+        'Manual spreadsheet updates',
+        'Unclear follow-up priorities',
+        'High-value prospects easily overlooked',
+      ], after: [
+        'Every lead automatically scored',
+        'High-intent buyers surfaced instantly',
+        'Centralized lead tracking',
+        'Faster response times',
+        'More time closing deals, less time sorting inquiries',
+      ] },
+
+      { type: 'heading', level: 2, text: 'Project Gallery' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-qualification/image_4.png', caption: 'Workflow architecture' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-qualification/image_5.png', caption: 'Lead qualification dashboard' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-qualification/image_6.png', caption: 'Automated alert email' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/real-estate-lead-qualification/image_7.png', caption: 'Lead database' },
+
+      { type: 'heading', level: 2, text: 'Outcome' },
+      { type: 'paragraph', text: 'By automating qualification, prioritization, notifications, and record-keeping, agents spend less time managing inquiries and more time engaging with qualified buyers — focused on what generates revenue: meaningful conversations and closed deals.' },
     ],
     featured: false,
     sort_order: 6,
@@ -322,7 +494,7 @@ export const caseStudies: CaseStudy[] = [
     testimonial_quote: null,
     testimonial_author: null,
     testimonial_role: null,
-    cover_image_url: null,
+    cover_image_url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image.png',
     pdf_url: 'https://res.cloudinary.com/dsyhgdfvc/raw/upload/v1781802002/portfolio/pdfs/propiq-appointment-booking.pdf',
     live_url: 'https://propiq-ai-liart.vercel.app/',
     tags: ['AI Agents', 'Real Estate', 'Appointment Booking', 'PropIQ'],
@@ -332,6 +504,101 @@ export const caseStudies: CaseStudy[] = [
       { value: '< 60s', label: 'Response Time', description: 'AI-powered instant replies' },
       { value: '2–3h', label: 'Saved Daily', description: 'Per agent, every day' },
       { value: 'Auto', label: 'Consultation Booking', description: 'No agent needed' },
+    ],
+    content_blocks: [
+      { type: 'lead', text: 'Turn inbound property inquiries into qualified consultations — automatically. An AI-powered qualification and booking system that responds instantly, prioritizes high-intent buyers, automates follow-ups, and books consultations without manual intervention.' },
+
+      { type: 'heading', level: 2, text: 'The Problem' },
+      { type: 'paragraph', text: 'Most real estate agents don\'t lose deals from a lack of leads — they lose them because they respond too slowly. Buyers are significantly more likely to work with the first agent who replies, but agents are busy with showings, negotiations, and client meetings. As response times go up, conversion rates go down.' },
+
+      { type: 'heading', level: 3, text: 'Typical Lead Workflow' },
+      { type: 'list', items: [
+        'Buyer submits an inquiry',
+        'Agent receives notification',
+        'Agent eventually reviews the inquiry',
+        'Agent manually decides whether it\'s worth pursuing',
+        'Agent sends an email',
+        'Agent attempts to schedule a consultation',
+        'Several follow-up messages are required',
+        'Many leads disappear',
+      ] },
+      { type: 'paragraph', text: 'This creates three major problems: slow response times, inconsistent follow-up, and poor lead prioritization. As lead volume grows, the problems compound.' },
+
+      { type: 'heading', level: 2, text: 'The Solution' },
+      { type: 'paragraph', text: 'PropIQ acts as an intelligent layer between a lead form and an agent\'s calendar. Every lead receives immediate attention; agents focus only on conversations that matter.' },
+      { type: 'list', style: 'check', items: [
+        'Qualifies every lead using AI',
+        'Scores buyer intent from 0–10',
+        'Prioritizes high-value opportunities',
+        'Sends personalized responses instantly',
+        'Schedules consultations automatically',
+        'Generates AI-powered meeting briefs',
+        'Runs automated reminder sequences',
+        'Maintains a clean sales pipeline',
+      ] },
+
+      { type: 'heading', level: 2, text: 'How It Works' },
+
+      { type: 'heading', level: 3, text: 'Step 1 — Lead Submission' },
+      { type: 'paragraph', text: 'A buyer submits a property inquiry through the website capturing name, email, location, property type, budget, and message.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image_1.png', caption: 'Lead capture form' },
+
+      { type: 'heading', level: 3, text: 'Step 2 — AI Qualification' },
+      { type: 'paragraph', text: 'LLaMA 3.3 70B on Groq analyzes the inquiry against budget strength, purchase intent, urgency, message quality, and buying readiness — generating a 0–10 score.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image_2.png', caption: 'AI qualification scoring' },
+
+      { type: 'heading', level: 3, text: 'Step 3 — Lead Routing' },
+      { type: 'paragraph', text: 'Hot leads (8–10) get a personalized email, a consultation booking link, and calendar scheduling options — all in under 60 seconds. Warm leads (5–7) enter an automated nurture sequence with agent visibility. Cold leads (0–4) are categorized and tracked without consuming agent time.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image_3.png', caption: 'Hot lead routing & instant email' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image_4.png', caption: 'Calendar scheduling experience' },
+
+      { type: 'heading', level: 3, text: 'Step 4 — Agent Notification' },
+      { type: 'paragraph', text: 'For qualified leads, the agent immediately receives lead details, qualification score, close probability, and a concise buyer summary — no manual review required.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image_5.png', caption: 'Agent notification email' },
+
+      { type: 'heading', level: 3, text: 'Step 5 — AI Meeting Brief Generation' },
+      { type: 'paragraph', text: 'Before every consultation, PropIQ generates a prep brief with buyer goals, likely objections, recommended discovery questions, and key discussion points. Agents walk into every call prepared.' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image_6.png', caption: 'AI-generated meeting brief' },
+
+      { type: 'heading', level: 3, text: 'Step 6 — Automated Follow-Up' },
+      { type: 'paragraph', text: 'If a consultation isn\'t booked, reminders fire at 24h and 48h. After 72h with no response, lead status is automatically updated to keep the pipeline clean.' },
+
+      { type: 'heading', level: 2, text: 'Workflow Architecture' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image_7.png', caption: 'End-to-end workflow orchestration' },
+      { type: 'paragraph', text: 'The workflow orchestrates lead capture, AI qualification, database storage, email automation, calendar scheduling, reminder sequences, meeting brief generation, and analytics tracking — all running 24/7.' },
+
+      { type: 'heading', level: 2, text: 'Dashboard' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image_8.png', caption: 'PropIQ admin dashboard' },
+      { type: 'paragraph', text: 'Lead pipeline visibility, lead scoring insights, appointment tracking, conversion monitoring, and funnel analytics — agents always know where their opportunities are.' },
+
+      { type: 'heading', level: 2, text: 'Business Impact' },
+      { type: 'table',
+        headers: ['Process', 'Before PropIQ', 'After PropIQ'],
+        rows: [
+          ['Lead Qualification', 'Manual review', 'AI scoring'],
+          ['Response Time', 'Hours', 'Under 60 seconds'],
+          ['Follow-Up', 'Inconsistent', 'Automated'],
+          ['Scheduling', 'Manual', 'Self-service'],
+          ['Call Preparation', 'Minimal', 'AI briefs'],
+          ['Pipeline Management', 'Time consuming', 'Automated'],
+        ] },
+
+      { type: 'heading', level: 2, text: 'Results' },
+      { type: 'list', style: 'check', items: [
+        'Respond instantly to every inquiry',
+        'Capture high-intent buyers before competitors',
+        'Save 2–3 hours per day per agent',
+        'Eliminate forgotten follow-ups',
+        'Improve consultation quality with AI briefs',
+        'Maintain a cleaner sales pipeline',
+        'Scale lead handling without hiring',
+      ] },
+
+      { type: 'heading', level: 2, text: 'Demo' },
+      { type: 'image', url: 'https://res.cloudinary.com/dsyhgdfvc/image/upload/portfolio/case-studies/propiq-appointment-booking/image_9.png', caption: 'Workflow architecture in production' },
+
+      { type: 'heading', level: 2, text: 'Conclusion' },
+      { type: 'paragraph', text: 'PropIQ transforms a traditional lead form into a 24/7 AI sales assistant. Instead of manually reviewing inquiries, chasing prospects, and coordinating appointments, agents receive qualified opportunities ready for conversation — from lead capture to consultation booking, automatically.' },
     ],
     featured: true,
     sort_order: 7,

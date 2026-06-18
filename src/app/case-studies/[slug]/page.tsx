@@ -1,10 +1,148 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { ArrowLeft, Quote, ArrowRight, ExternalLink, FileText } from 'lucide-react'
+import Image from 'next/image'
+import { ArrowLeft, Quote, ArrowRight, ExternalLink, FileText, Check, X } from 'lucide-react'
 import Navbar from '@/components/layout/Navbar'
 import Footer from '@/components/layout/Footer'
 import { caseStudies, siteConfig } from '@/lib/data'
+import type { CaseStudyBlock } from '@/lib/types'
+
+function ContentBlock({ block }: { block: CaseStudyBlock }) {
+  switch (block.type) {
+    case 'heading':
+      if (block.level === 2) {
+        return (
+          <h2 className="text-2xl sm:text-3xl font-semibold text-white tracking-tight mt-12 mb-5 first:mt-0">
+            {block.text}
+          </h2>
+        )
+      }
+      return (
+        <h3 className="text-lg sm:text-xl font-semibold text-white tracking-tight mt-8 mb-3">
+          {block.text}
+        </h3>
+      )
+    case 'lead':
+      return (
+        <p className="text-lg sm:text-xl text-white/90 leading-relaxed font-light first:mt-0">
+          {block.text}
+        </p>
+      )
+    case 'paragraph':
+      return (
+        <p className="text-[0.9375rem] text-white/85 leading-relaxed">
+          {block.text}
+        </p>
+      )
+    case 'list': {
+      const isCheck = block.style === 'check'
+      return (
+        <ul className="space-y-2.5">
+          {block.items.map((item, i) => (
+            <li key={i} className="flex items-start gap-3 text-[0.9375rem] text-white/85 leading-relaxed">
+              {isCheck ? (
+                <Check className="w-4 h-4 mt-1 shrink-0 text-[#00E5FF]" aria-hidden="true" />
+              ) : (
+                <span className="mt-2.5 w-1 h-1 shrink-0 rounded-full bg-[#00E5FF]" aria-hidden="true" />
+              )}
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    case 'image':
+      return (
+        <figure className="overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0F0F0F]">
+          <div className="relative w-full">
+            <Image
+              src={block.url}
+              alt={block.caption ?? ''}
+              width={1600}
+              height={1000}
+              className="w-full h-auto"
+              sizes="(min-width: 1024px) 768px, 100vw"
+            />
+          </div>
+          {block.caption && (
+            <figcaption className="px-4 py-3 text-xs text-[#B3B3B3] border-t border-white/[0.06]">
+              {block.caption}
+            </figcaption>
+          )}
+        </figure>
+      )
+    case 'table':
+      return (
+        <div className="overflow-x-auto rounded-2xl border border-white/[0.08]">
+          <table className="w-full text-sm">
+            <thead className="bg-white/[0.03]">
+              <tr>
+                {block.headers.map(h => (
+                  <th key={h} className="px-4 py-3 text-left text-xs font-semibold tracking-widest uppercase text-[#B3B3B3]">
+                    {h}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-white/[0.06]">
+              {block.rows.map((row, i) => (
+                <tr key={i} className="hover:bg-white/[0.02] transition-colors">
+                  {row.map((cell, j) => (
+                    <td key={j} className="px-4 py-3 text-[0.9375rem] text-white/85">
+                      {cell}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )
+    case 'callout': {
+      const accent = block.tone !== 'muted'
+      return (
+        <aside className={`rounded-2xl border p-5 ${accent ? 'border-[#00E5FF]/20 bg-[#00E5FF]/[0.04]' : 'border-white/[0.08] bg-[#111111]'}`}>
+          {block.title && (
+            <div className={`text-sm font-semibold mb-1.5 ${accent ? 'text-[#00E5FF]' : 'text-white'}`}>
+              {block.title}
+            </div>
+          )}
+          <p className="text-[0.9375rem] text-white/85 leading-relaxed">{block.text}</p>
+        </aside>
+      )
+    }
+    case 'beforeAfter':
+      return (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="rounded-2xl border border-white/[0.08] bg-[#111111] p-5">
+            <div className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">Before</div>
+            <ul className="space-y-2.5">
+              {block.before.map((item, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm text-white/80 leading-relaxed">
+                  <X className="w-4 h-4 mt-0.5 shrink-0 text-red-400/70" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded-2xl border border-[#00E5FF]/15 bg-[#00E5FF]/[0.03] p-5">
+            <div className="text-xs font-semibold tracking-widest uppercase text-[#00E5FF] mb-4">After</div>
+            <ul className="space-y-2.5">
+              {block.after.map((item, i) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm text-white/90 leading-relaxed">
+                  <Check className="w-4 h-4 mt-0.5 shrink-0 text-[#00E5FF]" aria-hidden="true" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      )
+    case 'divider':
+      return <hr className="border-white/[0.06]" />
+  }
+}
 
 interface Props {
   params: Promise<{ slug: string }>
@@ -110,6 +248,21 @@ export default async function CaseStudyPage({ params }: Props) {
                   {study.title}
                 </h1>
 
+                {/* Cover image */}
+                {study.cover_image_url && (
+                  <div className="mb-6 overflow-hidden rounded-2xl border border-white/[0.08] bg-[#0F0F0F]">
+                    <Image
+                      src={study.cover_image_url}
+                      alt={study.title}
+                      width={1600}
+                      height={900}
+                      priority
+                      className="w-full h-auto"
+                      sizes="(min-width: 1024px) 768px, 100vw"
+                    />
+                  </div>
+                )}
+
                 {/* Key Metrics Hero */}
                 <dl className={`grid gap-4 p-5 sm:p-6 rounded-2xl border border-white/[0.08] bg-[#111111] ${
                   study.metrics.length === 3 ? 'grid-cols-3' :
@@ -125,31 +278,41 @@ export default async function CaseStudyPage({ params }: Props) {
                 </dl>
               </header>
 
-              {/* Challenge */}
-              <section>
-                <h2 className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">The Challenge</h2>
-                <p className="text-white/90 leading-relaxed text-[0.9375rem]">{study.challenge}</p>
-              </section>
+              {study.content_blocks && study.content_blocks.length > 0 ? (
+                <div className="space-y-5">
+                  {study.content_blocks.map((block, i) => (
+                    <ContentBlock key={i} block={block} />
+                  ))}
+                </div>
+              ) : (
+                <>
+                  {/* Challenge */}
+                  <section>
+                    <h2 className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">The Challenge</h2>
+                    <p className="text-white/90 leading-relaxed text-[0.9375rem]">{study.challenge}</p>
+                  </section>
 
-              {/* Solution */}
-              <section>
-                <h2 className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">The Solution</h2>
-                <p className="text-white/90 leading-relaxed text-[0.9375rem]">{study.solution}</p>
-              </section>
+                  {/* Solution */}
+                  <section>
+                    <h2 className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">The Solution</h2>
+                    <p className="text-white/90 leading-relaxed text-[0.9375rem]">{study.solution}</p>
+                  </section>
 
-              {/* Implementation */}
-              {study.implementation && (
-                <section>
-                  <h2 className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">Implementation</h2>
-                  <p className="text-white/90 leading-relaxed text-[0.9375rem]">{study.implementation}</p>
-                </section>
+                  {/* Implementation */}
+                  {study.implementation && (
+                    <section>
+                      <h2 className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">Implementation</h2>
+                      <p className="text-white/90 leading-relaxed text-[0.9375rem]">{study.implementation}</p>
+                    </section>
+                  )}
+
+                  {/* Results */}
+                  <section>
+                    <h2 className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">Results</h2>
+                    <p className="text-white/90 leading-relaxed text-[0.9375rem]">{study.results}</p>
+                  </section>
+                </>
               )}
-
-              {/* Results */}
-              <section>
-                <h2 className="text-xs font-semibold tracking-widest uppercase text-[#B3B3B3] mb-4">Results</h2>
-                <p className="text-white/90 leading-relaxed text-[0.9375rem]">{study.results}</p>
-              </section>
 
               {/* Testimonial */}
               {study.testimonial_quote && (

@@ -75,6 +75,17 @@ export interface Project {
   updated_at: string
 }
 
+export type CaseStudyBlock =
+  | { type: 'heading'; level: 2 | 3; text: string }
+  | { type: 'paragraph'; text: string }
+  | { type: 'lead'; text: string }
+  | { type: 'list'; items: string[]; style?: 'bullet' | 'check' }
+  | { type: 'image'; url: string; caption?: string }
+  | { type: 'table'; headers: string[]; rows: string[][] }
+  | { type: 'callout'; tone?: 'accent' | 'muted'; title?: string; text: string }
+  | { type: 'beforeAfter'; before: string[]; after: string[] }
+  | { type: 'divider' }
+
 export interface CaseStudy {
   id: string
   project_id: string | null
@@ -97,6 +108,7 @@ export interface CaseStudy {
   tech_stack: string[]
   duration: string | null
   metrics: CaseStudyMetric[]
+  content_blocks?: CaseStudyBlock[]
   featured: boolean
   sort_order: number
   is_published: boolean
