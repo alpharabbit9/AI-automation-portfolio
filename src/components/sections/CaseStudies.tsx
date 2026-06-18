@@ -628,7 +628,10 @@ export default function CaseStudies({ studies }: CaseStudiesProps) {
     return () => observer.disconnect()
   }, [])
 
-  const published = studies.filter(s => s.is_published)
+  const published = studies
+    .filter(s => s.is_published)
+    .slice()
+    .sort((a, b) => a.sort_order - b.sort_order)
   const activeTestFn = FILTERS.find(f => f.key === activeFilter)?.test ?? (() => true)
   const filtered = published.filter(activeTestFn)
   const featured  = filtered.find(s => s.featured) ?? filtered[0]

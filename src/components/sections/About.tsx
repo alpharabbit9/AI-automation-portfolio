@@ -6,6 +6,7 @@ import { motion } from 'framer-motion'
 import { Mail, Phone } from 'lucide-react'
 import gsap from 'gsap'
 import { EASE_OUT, prefersReducedMotion } from '@/lib/motion'
+import { TechIcon } from '@/components/TechIcon'
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (
@@ -24,15 +25,18 @@ function XIcon({ className }: { className?: string }) {
 }
 
 const TECH_STACK = [
-  { name: 'Next.js',    color: '#ffffff',  bg: 'rgba(255,255,255,0.06)' },
-  { name: 'TypeScript', color: '#3B82F6',  bg: 'rgba(59,130,246,0.08)'  },
-  { name: 'Supabase',   color: '#3ECF8E',  bg: 'rgba(62,207,142,0.08)'  },
-  { name: 'n8n',        color: '#EA4B71',  bg: 'rgba(234,75,113,0.08)'  },
-  { name: 'OpenAI',     color: '#d4d4d4',  bg: 'rgba(212,212,212,0.06)' },
-  { name: 'Claude',     color: '#CC9B7A',  bg: 'rgba(204,155,122,0.08)' },
-  { name: 'LangChain',  color: '#5B8AF5',  bg: 'rgba(91,138,245,0.08)'  },
-  { name: 'PostgreSQL', color: '#4F9CF9',  bg: 'rgba(79,156,249,0.08)'  },
-  { name: 'Docker',     color: '#2496ED',  bg: 'rgba(36,150,237,0.08)'  },
+  { name: 'Next.js',      color: '#ffffff',  bg: 'rgba(255,255,255,0.04)' },
+  { name: 'TypeScript',   color: '#3178C6',  bg: 'rgba(49,120,198,0.08)'  },
+  { name: 'Tailwind CSS', color: '#38BDF8',  bg: 'rgba(56,189,248,0.08)'  },
+  { name: 'n8n',          color: '#EA4B71',  bg: 'rgba(234,75,113,0.08)'  },
+  { name: 'Claude',       color: '#D97757',  bg: 'rgba(217,119,87,0.08)'  },
+  { name: 'LangChain',    color: '#1C3C3C',  bg: 'rgba(28,60,60,0.10)'    },
+  { name: 'Supabase',     color: '#3ECF8E',  bg: 'rgba(62,207,142,0.08)'  },
+  { name: 'PostgreSQL',   color: '#4F9CF9',  bg: 'rgba(79,156,249,0.08)'  },
+  { name: 'Resend',       color: '#ffffff',  bg: 'rgba(255,255,255,0.04)' },
+  { name: 'Google Sheets',color: '#34A853',  bg: 'rgba(52,168,83,0.08)'   },
+  { name: 'Docker',       color: '#2496ED',  bg: 'rgba(36,150,237,0.08)'  },
+  { name: 'Vercel',       color: '#ffffff',  bg: 'rgba(255,255,255,0.04)' },
 ] as const
 
 const SOCIAL_LINKS = [
@@ -279,7 +283,7 @@ export default function About() {
         <div className="mt-20 pt-12 border-t border-white/[0.06]">
           <span className="section-label block mb-8" aria-label="Tools and Technologies">Tools &amp; Technologies</span>
 
-          <div className="grid grid-cols-3 sm:grid-cols-5 lg:grid-cols-9 gap-3" role="list" aria-label="Technology stack">
+          <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-6 gap-3" role="list" aria-label="Technology stack">
             {TECH_STACK.map((tech, i) => (
               <motion.div
                 key={tech.name}
@@ -292,22 +296,17 @@ export default function About() {
                   y: -4,
                   transition: { type: 'spring', stiffness: 400, damping: 25 },
                 }}
-                className="rounded-xl border border-white/[0.07] px-3 py-4 flex flex-col items-center gap-2 cursor-default"
+                className="rounded-xl border px-4 py-5 flex flex-col items-center gap-2.5 cursor-default"
                 style={{
-                  borderColor: tech.bg,
+                  borderColor: 'rgba(255,255,255,0.07)',
                   background: tech.bg,
                 }}
                 title={tech.name}
               >
-                <div
-                  className="w-2 h-2 rounded-full flex-shrink-0"
-                  style={{ background: tech.color }}
-                  aria-hidden="true"
-                />
-                <span
-                  className="text-[11px] font-semibold text-center leading-tight"
-                  style={{ color: tech.color }}
-                >
+                <span style={{ color: tech.color }} aria-hidden="true">
+                  <TechIcon name={tech.name} className="w-7 h-7 flex-shrink-0" />
+                </span>
+                <span className="text-[11px] font-medium text-center leading-tight text-white/85">
                   {tech.name}
                 </span>
               </motion.div>

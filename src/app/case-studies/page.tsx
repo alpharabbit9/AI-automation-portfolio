@@ -11,7 +11,10 @@ export const metadata: Metadata = {
 }
 
 export default function CaseStudiesPage() {
-  const published = caseStudies.filter(s => s.is_published)
+  const published = caseStudies
+    .filter(s => s.is_published)
+    .slice()
+    .sort((a, b) => a.sort_order - b.sort_order)
 
   return (
     <>

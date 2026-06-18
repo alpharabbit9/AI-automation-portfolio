@@ -54,7 +54,7 @@ export default function Navbar() {
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
             <Link href="/" className="flex items-center group" aria-label="Rifat Ahmed — Home">
-              <Image src="/logo.png" alt="Rifat Ahmed" height={24} width={120} className="h-6 w-auto" priority />
+              <Image src="/logo-trimmed.png" alt="Rifat Ahmed" height={326} width={574} className="h-8 w-auto" priority />
             </Link>
 
             {/* Desktop Nav */}

@@ -76,6 +76,11 @@
     color: var(--foreground);
     min-height: 100vh;
     overflow-x: hidden;
+    line-height: 1.6;
+  }
+
+  p {
+    line-height: 1.65;
   }
 
   /* Focus-visible ring — keyboard navigation only */
@@ -113,9 +118,13 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
   }
+
+  h1 { line-height: 1.1; }
+  h2 { line-height: 1.2; }
+  h3, h4 { line-height: 1.3; }
 }
 
 @layer utilities {

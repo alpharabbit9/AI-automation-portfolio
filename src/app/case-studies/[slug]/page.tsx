@@ -279,7 +279,7 @@ export default async function CaseStudyPage({ params }: Props) {
               </header>
 
               {study.content_blocks && study.content_blocks.length > 0 ? (
-                <div className="space-y-5">
+                <div className="space-y-6">
                   {study.content_blocks.map((block, i) => (
                     <ContentBlock key={i} block={block} />
                   ))}
